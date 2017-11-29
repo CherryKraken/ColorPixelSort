@@ -12,7 +12,7 @@ namespace ImagePixelSorting
     {
         public static void Main(string[] args)
         {
-            Bitmap img = new Bitmap(@"G:\image.bmp", true);
+            Bitmap img = new Bitmap(@"G:\newimage.jpg", true);
 
             Pixel[,] pixels = new Pixel[img.Height, img.Width];
             for (int y = 0; y < img.Height; y++)
@@ -31,16 +31,16 @@ namespace ImagePixelSorting
 
             for (int i = 0; i < pixels.GetLength(1); i++)
             {
-                InsertionSorter<Pixel> line = new InsertionSorter<Pixel>(GetRow(pixels, i));
+                PixelRadixSorter line = new PixelRadixSorter(GetRow(pixels, i));
                 line.Sort();
-                
+
                 for (int j = 0; j < line.Length; j++)
                 {
                     result.SetPixel(i, j, line[j].Color);
                 }
             }
 
-            result.Save(@"G:\image-sorted-reverse.bmp");
+            result.Save(@"G:\sortedImage.bmp");
         }
 
 
@@ -58,18 +58,6 @@ namespace ImagePixelSorting
                 returnRow[i] = input2DArray[i, row];
 
             return returnRow;
-        }
-    }
-
-
-    public class Pixel : IComparable<Pixel>
-    {
-        public Color Color { get; set; }
-
-        public int CompareTo(Pixel obj)
-        {
-            Color other = obj.Color;
-            return  (other.R + other.G + other.B) - (Color.R + Color.G + Color.B);
         }
     }
 }

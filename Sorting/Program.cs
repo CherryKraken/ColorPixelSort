@@ -44,7 +44,7 @@ namespace Sorting
                 array[i] = rand.Next(array.Length * 100);
             }
 
-            TestSorter(new InsertionSorter<int>(array));
+            TestSorter(new IntegerRadixSorter(array));
         }
 
         static void Main(string[] args)
