@@ -12,7 +12,7 @@ namespace ImagePixelSorting
     {
         public static void Main(string[] args)
         {
-            Bitmap img = new Bitmap(@"G:\newimage.jpg", true);
+            Bitmap img = new Bitmap(@"G:\image2.jpg", true);
 
             Pixel[,] pixels = new Pixel[img.Height, img.Width];
             for (int y = 0; y < img.Height; y++)
@@ -40,7 +40,7 @@ namespace ImagePixelSorting
                 }
             }
 
-            result.Save(@"G:\sortedImage.bmp");
+            result.Save(@"G:\sortedImage2.bmp");
         }
 
 

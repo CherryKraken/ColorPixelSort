@@ -34,7 +34,7 @@ namespace Sorting
         {
             Console.WriteLine("Enter number of elements: ");
             string input = Console.ReadLine();
-            int[] array = new int[Int32.Parse(input)];
+            int[] array = new int[int.Parse(input)];
 
             // Seed rand() on milliseconds
             Random rand = new Random(Environment.TickCount);
@@ -44,7 +44,7 @@ namespace Sorting
                 array[i] = rand.Next(array.Length * 100);
             }
 
-            TestSorter(new IntegerRadixSorter(array));
+            TestSorter(new OptimalQuickSorter<int>(array));
         }
 
         static void Main(string[] args)
